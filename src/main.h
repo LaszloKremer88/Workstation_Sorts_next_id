@@ -7,6 +7,6 @@ void seq_count_setup();
 void seq_count_loop();
 void read_serial();
 
-void wr_next_station(String id);
+void wr_next_station(uint8_t id);
 
 #endif

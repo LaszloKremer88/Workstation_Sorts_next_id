@@ -2,10 +2,13 @@
 
 char Serial_input_char;
 char Serial_input_char_arr[10];
+uint8_t Station_id;
+uint8_t prev_Station_id;
 String Serial_input_string;
-String Station_ID;
-String prev_Station_ID;
-String Station_ID_arr[4] = {"A1", "A2", "A3", "A4"};
+String Station_name;
+String prev_Station_name;
+String Station_name_arr[4] = {"A1", "A2", "A3", "A4"};
+uint8_t Station_id_arr[4] = {1,2,3,4};
 
 
 void setup() {
@@ -30,10 +33,11 @@ void loop() {
 
       for (uint8_t i = 0; i < 4; i++)
       {
-        if (Serial_input_string.startsWith(Station_ID_arr[i])) {
-          prev_Station_ID = Station_ID;
-          Station_ID = Station_ID_arr[i];
-          wr_next_station(Station_ID);
+        if (Serial_input_string.startsWith(Station_name_arr[i])) {
+          prev_Station_name = Station_name;
+          Station_name = Station_name_arr[i];
+          Station_id = Station_id_arr[i];
+          wr_next_station(Station_id);
         }
       }
 
@@ -46,6 +50,6 @@ void loop() {
 
 }
 
-void wr_next_station(String id) {
+void wr_next_station(uint8_t id) {
   Serial.println("A következő állomás az " + id);
 }
